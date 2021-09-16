@@ -16,20 +16,12 @@ import javax.net.ssl.SSLContext;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.ssl.TrustStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.core.env.Environment;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+
+import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -169,7 +161,7 @@ public class ResidentServiceRestClient {
 
 			} catch (Exception e) {
 				e.printStackTrace();
-				throw new ApisResourceAccessException("Exception occured while accessing ", e);
+				throw new ApisResourceAccessException("Exception occurred while accessing ", e);
 
 			}
 		}
@@ -214,7 +206,7 @@ public class ResidentServiceRestClient {
 			logger.error(LoggerFileConstant.SESSIONID.toString(), LoggerFileConstant.APPLICATIONID.toString(),
 					LoggerFileConstant.APPLICATIONID.toString(), e.getMessage() + ExceptionUtils.getStackTrace(e));
 
-			throw new ApisResourceAccessException("Exception occured while accessing " + uri, e);
+			throw new ApisResourceAccessException("Exception occurred while accessing " + uri, e);
 		}
 	}
 
@@ -247,7 +239,7 @@ public class ResidentServiceRestClient {
 			logger.error(LoggerFileConstant.SESSIONID.toString(), LoggerFileConstant.APPLICATIONID.toString(),
 					LoggerFileConstant.APPLICATIONID.toString(), e.getMessage() + ExceptionUtils.getStackTrace(e));
 
-			throw new ApisResourceAccessException("Exception occured while accessing " + uri, e);
+			throw new ApisResourceAccessException("Exception occurred while accessing " + uri, e);
 		}
 		return result;
 	}
