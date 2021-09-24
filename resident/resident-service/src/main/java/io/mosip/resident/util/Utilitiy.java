@@ -75,7 +75,7 @@ public class Utilitiy {
     private String configServerFileStorageURL;
 
     @Value("${resident.identityjson}")
-    private String getRegProcessorIdentityJson;
+    private String residentIdentityJson;
 
     @Autowired
     @Qualifier("restTemplate")
@@ -90,7 +90,7 @@ public class Utilitiy {
 
     @PostConstruct
     private void loadRegProcessorIdentityJson() {
-        regProcessorIdentityJson = residentRestTemplate.getForObject(configServerFileStorageURL + getRegProcessorIdentityJson, String.class);
+        regProcessorIdentityJson = residentRestTemplate.getForObject(configServerFileStorageURL + residentIdentityJson, String.class);
         logger.info(LoggerFileConstant.SESSIONID.toString(), LoggerFileConstant.APPLICATIONID.toString(),
                 LoggerFileConstant.APPLICATIONID.toString(), "loadRegProcessorIdentityJson completed successfully");
     }
@@ -265,7 +265,7 @@ public class Utilitiy {
 
     public String getMappingJson() {
         if (StringUtils.isEmpty(regProcessorIdentityJson)) {
-            return residentRestTemplate.getForObject(configServerFileStorageURL + getRegProcessorIdentityJson, String.class);
+            return residentRestTemplate.getForObject(configServerFileStorageURL + residentIdentityJson, String.class);
         }
         return regProcessorIdentityJson;
     }
