@@ -1,19 +1,10 @@
 package io.mosip.resident.util;
 
-import java.io.IOException;
-import java.net.URI;
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.X509Certificate;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.PostConstruct;
-import javax.net.ssl.SSLContext;
-
+import io.mosip.kernel.core.logger.spi.Logger;
+import io.mosip.resident.config.LoggerConfiguration;
+import io.mosip.resident.constant.ApiName;
+import io.mosip.resident.constant.LoggerFileConstant;
+import io.mosip.resident.exception.ApisResourceAccessException;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +20,11 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import io.mosip.kernel.core.logger.spi.Logger;
-import io.mosip.resident.config.LoggerConfiguration;
-import io.mosip.resident.constant.ApiName;
-import io.mosip.resident.constant.LoggerFileConstant;
-import io.mosip.resident.exception.ApisResourceAccessException;
+import java.io.IOException;
+import java.net.URI;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * The Class RestApiClient.
